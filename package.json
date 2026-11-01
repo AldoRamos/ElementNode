@@ -1,0 +1,37 @@
+{
+  "name": "element-node",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./html": {
+      "types": "./dist/html/index.d.mts",
+      "import": "./dist/html/index.mjs"
+    },
+    "./validation": {
+      "types": "./dist/validation/index.d.mts",
+      "import": "./dist/validation/index.mjs"
+    },
+    "./browser": {
+      "types": "./dist/browser/index.d.mts",
+      "import": "./dist/browser/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
